@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Star, BookOpen, Users } from "lucide-react";
-import heroVideo from "../assets/video/Video Project.mp4";
 import logoImg from "../assets/Logo/logo.jpeg";
+
+const heroVideo = "https://res.cloudinary.com/dbkn7cvph/video/upload/v1780926312/Video_Project_axjcy5.mp4";
 
 const stats = [
   { icon: BookOpen, value: "15+", label: "Years of Excellence" },
