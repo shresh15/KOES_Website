@@ -69,7 +69,7 @@ export default function Navbar() {
       {/* Top bar — hidden on mobile */}
       <div className="bg-primary-950 text-white text-sm py-2 px-4 hidden md:flex justify-between items-center">
         <div className="flex items-center gap-6">
-          <a href="tel:9433307528" className="flex items-center gap-1.5 hover:text-gold-400 transition-colors">
+          <a href="tel:9433307528" className="flex items-center gap-1.5 hover:text-gold-400 transition-colors font-numeric">
             <Phone size={13} /> 9433307528 / 8961725696
           </a>
           <a href="mailto:koesworkspace16@gmail.com" className="flex items-center gap-1.5 hover:text-gold-400 transition-colors">
@@ -77,7 +77,7 @@ export default function Navbar() {
           </a>
         </div>
         <div className="flex items-center gap-2 text-gold-400 font-semibold tracking-wide animate-pulse">
-          🎓 Admissions Open 2026–27 · Nursery to Class IX & XI
+          🎓 Admissions Open <span className="font-numeric">2026–27</span> · Nursery to Class IX & XI
         </div>
       </div>
 
@@ -287,7 +287,7 @@ export default function Navbar() {
 
                 {/* Mobile contact strip */}
                 <div className="pt-2 border-t border-gray-100 flex flex-col gap-2 text-xs text-gray-500">
-                  <a href="tel:9433307528" className="flex items-center gap-2 hover:text-primary-700 px-1">
+                  <a href="tel:9433307528" className="flex items-center gap-2 hover:text-primary-700 px-1 font-numeric">
                     <Phone size={12} /> 9433307528 / 8961725696
                   </a>
                   <a href="mailto:koesworkspace16@gmail.com" className="flex items-center gap-2 hover:text-primary-700 px-1">

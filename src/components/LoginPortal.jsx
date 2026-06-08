@@ -104,7 +104,7 @@ export default function LoginPortal() {
               Affiliated to CBSE
             </div>
             <div className="text-[11px] text-primary-400">
-              Affiliation No. 2430473 · Nursery to Class XII
+              Affiliation No. <span className="font-numeric">2430473</span> · Nursery to Class XII
             </div>
           </div>
         </div>
