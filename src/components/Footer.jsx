@@ -1,8 +1,16 @@
 import { motion } from "framer-motion";
 import { ExternalLink, MessageCircle, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import logoImg from "../assets/Logo/logo.jpeg";
+import { Link } from "react-router-dom";
 
-const quickLinks = ["Home", "About Us", "Academics", "Notice Board", "Gallery", "Contact Us"];
+const quickLinks = [
+  { label: "Home", href: "/#home" },
+  { label: "About Us", href: "/#about" },
+  { label: "Academics", href: "/#academics" },
+  { label: "Notice Board", href: "/#notice" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Contact Us", href: "/#contact" },
+];
 
 export default function Footer() {
   return (
@@ -62,15 +70,15 @@ export default function Footer() {
         <div>
           <h4 className="font-display font-bold text-lg mb-5">Quick Links</h4>
           <ul className="space-y-2.5">
-            {quickLinks.map((link) => (
-              <li key={link}>
-                <a
-                  href={`#${link.toLowerCase().replace(/\s+/g, "")}`}
+            {quickLinks.map((item) => (
+              <li key={item.label}>
+                <Link
+                  to={item.href}
                   className="flex items-center gap-2 text-sm text-primary-300 hover:text-gold-400 transition-colors group"
                 >
                   <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
-                  {link}
-                </a>
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -87,12 +95,12 @@ export default function Footer() {
             </div>
             <div className="text-xs text-primary-400 mb-1">Affiliation No.</div>
             <div className="text-white font-bold text-lg font-display font-numeric">2430473</div>
-            <a
-              href="#contact"
+            <Link
+              to="/#contact"
               className="mt-4 block text-center py-2.5 bg-gold-500 hover:bg-gold-400 text-primary-950 font-bold text-sm rounded-xl transition-all"
             >
               Apply Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

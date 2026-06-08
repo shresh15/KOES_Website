@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import ScrollToHash from "./components/ScrollToHash";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
@@ -14,6 +15,7 @@ import LoginPortal from "./components/LoginPortal";
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <ScrollToHash />
       <Navbar />
       <div className="flex-grow">
         <Routes>

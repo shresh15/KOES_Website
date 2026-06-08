@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logoImg from "../assets/Logo/logo.jpeg";
 
 const navLinks = [
@@ -36,16 +36,55 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isLoginPage = location.pathname === "/login";
 
   const getHref = (link) => {
     if (link.isRoute) return link.href;
-    return isLoginPage ? `/${link.href}` : link.href;
+    return `/#${link.href.replace("#", "")}`;
   };
 
   const getChildHref = (child) => {
-    return isLoginPage ? `/${child.href}` : child.href;
+    return `/#${child.href.replace("#", "")}`;
+  };
+
+  const handleLinkClick = (e, href, isRoute) => {
+    if (isRoute) {
+      setMobileOpen(false);
+      return;
+    }
+
+    e.preventDefault();
+    
+    let targetId = href.includes("#") ? href.split("#")[1] : href;
+    
+    // Custom mappings
+    if (["principal", "vision"].includes(targetId)) {
+      targetId = "about";
+    } else if (["curriculum", "facilities", "cocurricular"].includes(targetId)) {
+      targetId = "academics";
+    }
+
+    if (isLoginPage) {
+      setMobileOpen(false);
+      navigate(`/#${targetId}`);
+    } else {
+      const delay = mobileOpen ? 350 : 0;
+      setMobileOpen(false);
+      
+      // Update URL hash without page reload
+      window.history.pushState(null, "", `/#${targetId}`);
+      
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          const yOffset = -80; // height of sticky header
+          const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }, delay);
+    }
   };
 
   useEffect(() => {
@@ -128,6 +167,7 @@ export default function Navbar() {
                 ) : (
                   <a
                     href={getHref(link)}
+                    onClick={(e) => handleLinkClick(e, getHref(link), false)}
                     className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-700 rounded-md hover:bg-primary-50 transition-all"
                   >
                     {link.label}
@@ -147,6 +187,7 @@ export default function Navbar() {
                         <a
                           key={child.label}
                           href={getChildHref(child)}
+                          onClick={(e) => handleLinkClick(e, getChildHref(child), false)}
                           className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors"
                         >
                           {child.label}
@@ -161,7 +202,8 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <a
-            href={isLoginPage ? "/#contact" : "#contact"}
+            href="/#contact"
+            onClick={(e) => handleLinkClick(e, "/#contact", false)}
             className="hidden lg:inline-flex items-center px-5 py-2 bg-primary-700 hover:bg-primary-800 text-white text-sm font-semibold rounded-full transition-all shadow-md hover:shadow-primary-200 hover:shadow-lg"
           >
             Admissions
@@ -227,8 +269,8 @@ export default function Navbar() {
                       <div className="flex items-center justify-between gap-2">
                         <a
                           href={getHref(link)}
+                          onClick={(e) => handleLinkClick(e, getHref(link), false)}
                           className="flex-1 block px-3 py-3 text-sm font-medium text-gray-700 hover:text-primary-700 hover:bg-primary-50 rounded-xl transition-colors"
-                          onClick={() => setMobileOpen(false)}
                         >
                           {link.label}
                         </a>
@@ -261,8 +303,8 @@ export default function Navbar() {
                               <a
                                 key={child.label}
                                 href={getChildHref(child)}
+                                onClick={(e) => handleLinkClick(e, getChildHref(child), false)}
                                 className="block px-3 py-2.5 text-sm text-gray-500 hover:text-primary-700 hover:bg-primary-50 rounded-lg transition-colors border-l-2 border-primary-100 ml-1 mb-0.5"
-                                onClick={() => setMobileOpen(false)}
                               >
                                 {child.label}
                               </a>
@@ -275,8 +317,8 @@ export default function Navbar() {
                     <a
                       key={link.label}
                       href={getHref(link)}
+                      onClick={(e) => handleLinkClick(e, getHref(link), false)}
                       className="block px-3 py-3 text-sm font-medium text-gray-700 hover:text-primary-700 hover:bg-primary-50 rounded-xl transition-colors"
-                      onClick={() => setMobileOpen(false)}
                     >
                       {link.label}
                     </a>
@@ -286,9 +328,9 @@ export default function Navbar() {
                 {/* Mobile CTA */}
                 <div className="pt-2">
                   <a
-                    href={isLoginPage ? "/#contact" : "#contact"}
+                    href="/#contact"
+                    onClick={(e) => handleLinkClick(e, "/#contact", false)}
                     className="block text-center px-5 py-3 bg-primary-700 hover:bg-primary-800 text-white text-sm font-semibold rounded-full transition-colors shadow-md"
-                    onClick={() => setMobileOpen(false)}
                   >
                     Admissions
                   </a>
