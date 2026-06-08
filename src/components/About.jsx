@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, Phone, Mail, CheckCircle } from "lucide-react";
+import { MapPin, CheckCircle } from "lucide-react";
+import schoolImg from "../assets/Building/school1.jpg";
 
 const highlights = [
   "Affiliated to CBSE (Affiliation No. 2430473)",
@@ -28,29 +29,12 @@ export default function About() {
           className="relative"
         >
           {/* Main image placeholder */}
-          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-primary-700 to-primary-950 aspect-[4/3] flex items-center justify-center">
-            <div className="text-center text-white p-6 sm:p-8">
-              <div className="font-display text-4xl sm:text-6xl font-bold mb-2 text-gold-400">KOES</div>
-              <div className="text-primary-200 text-lg">Kankinara Oxford English School</div>
-              <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
-                <div className="bg-white/10 rounded-xl p-3">
-                  <div className="text-2xl font-bold text-white font-numeric">15+</div>
-                  <div className="text-primary-300">Years</div>
-                </div>
-                <div className="bg-white/10 rounded-xl p-3">
-                  <div className="text-2xl font-bold text-white font-numeric">2000+</div>
-                  <div className="text-primary-300">Students</div>
-                </div>
-                <div className="bg-white/10 rounded-xl p-3">
-                  <div className="text-2xl font-bold text-white font-numeric">50+</div>
-                  <div className="text-primary-300">Teachers</div>
-                </div>
-                <div className="bg-white/10 rounded-xl p-3">
-                  <div className="text-2xl font-bold text-white">CBSE</div>
-                  <div className="text-primary-300">Affiliated</div>
-                </div>
-              </div>
-            </div>
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-primary-700 to-primary-950 aspect-[4/3]">
+            <img
+              src={schoolImg}
+              alt="KOES School Building"
+              className="w-full h-full object-cover"
+            />
           </div>
 
           {/* Floating info card */}
