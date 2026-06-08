@@ -55,7 +55,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 bg-gold-500/20 border border-gold-500/40 text-gold-400 px-4 py-1.5 rounded-full text-sm font-medium mb-6"
           >
             <span className="w-2 h-2 bg-gold-400 rounded-full animate-pulse" />
-            Admissions Open 2026–27
+            Admissions Open <span className="font-numeric">2026–27</span>
           </motion.div>
 
           <motion.h1
@@ -152,7 +152,7 @@ export default function Hero() {
               </div>
               <div className="mt-6 p-4 bg-gold-500/20 rounded-2xl border border-gold-500/30">
                 <div className="text-xs text-gold-400 font-semibold mb-1">Affiliation No.</div>
-                <div className="text-white font-bold text-lg">2430473</div>
+                <div className="text-white font-bold text-lg font-numeric">2430473</div>
               </div>
             </div>
 
@@ -163,7 +163,7 @@ export default function Hero() {
               className="absolute -top-4 -right-4 bg-gold-500 text-primary-950 rounded-2xl px-4 py-3 shadow-xl"
             >
               <div className="text-xs font-semibold">CBSE Board</div>
-              <div className="text-xl font-bold font-display">10+2</div>
+              <div className="text-xl font-bold font-display"><span className="font-numeric">10+2</span></div>
             </motion.div>
           </div>
         </motion.div>

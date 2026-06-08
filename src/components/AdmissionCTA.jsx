@@ -26,7 +26,7 @@ export default function AdmissionCTA() {
             <div>
               <div className="text-gold-400 font-semibold text-sm mb-1 uppercase tracking-wide">Admissions Open</div>
               <h2 className="font-display font-bold text-3xl md:text-4xl leading-tight">
-                Join KOES for Session 2026–27
+                Join KOES for Session <span className="font-numeric">2026–27</span>
               </h2>
               <p className="text-primary-200 mt-2 text-sm max-w-md">
                 Enrolling for Nursery through Class IX and Class XI. Secure your child's future with a quality CBSE education.

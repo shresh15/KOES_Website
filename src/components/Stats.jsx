@@ -31,7 +31,7 @@ function Counter({ value, suffix }) {
   }, [inView, value]);
 
   return (
-    <span ref={ref} className="font-display font-bold text-4xl sm:text-5xl text-white">
+    <span ref={ref} className="font-display font-bold text-4xl sm:text-5xl text-white font-numeric">
       {count}{suffix}
     </span>
   );

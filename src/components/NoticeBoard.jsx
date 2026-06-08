@@ -74,7 +74,7 @@ export default function NoticeBoard() {
                 <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">
                   <Bell size={18} className="text-primary-600" />
                 </div>
-                <div className="flex items-center gap-1.5 text-gray-400 text-xs">
+                <div className="flex items-center gap-1.5 text-gray-400 text-xs font-numeric">
                   <Calendar size={12} />
                   {notice.date}
                 </div>
@@ -85,7 +85,7 @@ export default function NoticeBoard() {
                   <span className={`text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ${notice.badgeColor}`}>
                     {notice.badge}
                   </span>
-                  <h3 className="font-semibold text-gray-900 group-hover:text-primary-700 transition-colors">
+                  <h3 className="font-semibold text-gray-900 group-hover:text-primary-700 transition-colors font-numeric">
                     {notice.title}
                   </h3>
                 </div>

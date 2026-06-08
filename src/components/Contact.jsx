@@ -70,7 +70,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-0.5">{label}</div>
-                  <div className="text-gray-800 text-sm">{value}</div>
+                  <div className="text-gray-800 text-sm font-numeric">{value}</div>
                 </div>
               </div>
             ))}

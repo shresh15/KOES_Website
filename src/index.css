@@ -11,6 +11,8 @@
   }
   html {
     scroll-behavior: smooth;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "tnum";
   }
   body {
     font-family: 'DM Sans', sans-serif;
@@ -21,5 +23,11 @@
 @layer utilities {
   .text-shadow {
     text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  .font-numeric {
+    font-family: 'DM Sans', sans-serif;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "tnum";
   }
 }

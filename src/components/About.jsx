@@ -34,15 +34,15 @@ export default function About() {
               <div className="text-primary-200 text-lg">Kankinara Oxford English School</div>
               <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
                 <div className="bg-white/10 rounded-xl p-3">
-                  <div className="text-2xl font-bold text-white">15+</div>
+                  <div className="text-2xl font-bold text-white font-numeric">15+</div>
                   <div className="text-primary-300">Years</div>
                 </div>
                 <div className="bg-white/10 rounded-xl p-3">
-                  <div className="text-2xl font-bold text-white">2000+</div>
+                  <div className="text-2xl font-bold text-white font-numeric">2000+</div>
                   <div className="text-primary-300">Students</div>
                 </div>
                 <div className="bg-white/10 rounded-xl p-3">
-                  <div className="text-2xl font-bold text-white">50+</div>
+                  <div className="text-2xl font-bold text-white font-numeric">50+</div>
                   <div className="text-primary-300">Teachers</div>
                 </div>
                 <div className="bg-white/10 rounded-xl p-3">
@@ -90,7 +90,13 @@ export default function About() {
             {highlights.map((item) => (
               <li key={item} className="flex items-start gap-3 text-gray-700 text-sm">
                 <CheckCircle size={18} className="text-primary-600 mt-0.5 flex-shrink-0" />
-                {item}
+                {item === "Affiliated to CBSE (Affiliation No. 2430473)" ? (
+                  <span>
+                    Affiliated to CBSE (Affiliation No. <span className="font-numeric">2430473</span>)
+                  </span>
+                ) : (
+                  item
+                )}
               </li>
             ))}
           </ul>
