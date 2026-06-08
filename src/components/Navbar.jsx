@@ -86,11 +86,10 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          scrolled
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled
             ? "bg-white/95 backdrop-blur-md shadow-lg py-2"
             : "bg-white py-3"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
@@ -225,23 +224,33 @@ export default function Navbar() {
                     </Link>
                   ) : link.children ? (
                     <div key={link.label}>
-                      {/* Accordion toggle */}
-                      <button
-                        className="w-full flex items-center justify-between px-3 py-3 text-sm font-medium text-gray-700 hover:text-primary-700 hover:bg-primary-50 rounded-xl transition-colors"
-                        onClick={() => toggleMobileExpanded(link.label)}
-                      >
-                        <span>{link.label}</span>
-                        <motion.span
-                          animate={{ rotate: mobileExpanded === link.label ? 180 : 0 }}
-                          transition={{ duration: 0.2 }}
-                          style={{ display: "inline-block" }}
+                      <div className="flex items-center justify-between gap-2">
+                        <a
+                          href={getHref(link)}
+                          className="flex-1 block px-3 py-3 text-sm font-medium text-gray-700 hover:text-primary-700 hover:bg-primary-50 rounded-xl transition-colors"
+                          onClick={() => setMobileOpen(false)}
                         >
-                          <ChevronDown size={16} />
-                        </motion.span>
-                      </button>
+                          {link.label}
+                        </a>
+                        <button
+                          className="p-3 rounded-xl text-gray-600 hover:text-primary-700 hover:bg-primary-50 transition-colors"
+                          onClick={() => toggleMobileExpanded(link.label)}
+                          aria-expanded={mobileExpanded === link.label}
+                          aria-controls={`${link.label}-mobile-submenu`}
+                        >
+                          <motion.span
+                            animate={{ rotate: mobileExpanded === link.label ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                            style={{ display: "inline-block" }}
+                          >
+                            <ChevronDown size={16} />
+                          </motion.span>
+                        </button>
+                      </div>
                       <AnimatePresence>
                         {mobileExpanded === link.label && (
                           <motion.div
+                            id={`${link.label}-mobile-submenu`}
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
